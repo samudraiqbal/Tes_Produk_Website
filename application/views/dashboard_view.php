@@ -11,15 +11,13 @@
                 <button href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                         class="fas fa-download fa-sm text-white-50"></i> Get Data From API</button>
             </form>
-            <!-- <button href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-2"><i
-                    class="fas fa-check fa-sm text-white-50"></i> Show All Data</button> -->
-            
+
             <!-- Dropdown Filter -->
             <div class="dropdown d-inline-block">
                 <button class="d-none d-sm-inline-block btn btn-sm btn-primary dropdown-toggle ml-2" type="button" id="dropdownFilterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter by Status
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownFilterButton">
+                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownFilterButton">
                     <a class="dropdown-item" href="<?= site_url('dashboard/index') ?>">Semua</a>
                     <a class="dropdown-item" href="<?= site_url('dashboard/index?filter_status=1') ?>">Bisa dijual</a>
                     <a class="dropdown-item" href="<?= site_url('dashboard/index?filter_status=2') ?>">Tidak bisa dijual</a>

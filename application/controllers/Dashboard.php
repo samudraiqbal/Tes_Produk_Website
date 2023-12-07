@@ -5,6 +5,7 @@ class Dashboard extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
         $this->load->model('DashboardModel');
     }
 
@@ -26,12 +27,12 @@ class Dashboard extends CI_Controller {
         $result = $this->DashboardModel->getData();
 
         if ($result) {
-            echo 'Data berhasil diambil dari API dan disimpan ke database.';
+            $this->session->set_flashdata('success_message', 'Berhasil mengambil data dari API dan disimpan ke database.');
         } else {
-            echo 'Terjadi kesalahan saat mengambil data dari API.';
+            $this->session->set_flashdata('error_message', 'Terjadi kesalahan saat mengambil data dari API.');
         }
-
-        //redirect('dashboard');
+    
+        redirect('dashboard');
     }
 }
 ?>

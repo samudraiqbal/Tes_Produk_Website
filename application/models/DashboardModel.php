@@ -12,8 +12,8 @@ class DashboardModel extends CI_Model {
 
         // Data untuk dikirim (gunakan format sesuai kebutuhan API)
         $data = array(
-            'username' => 'tesprogrammer071223C21',
-            'password' => 'ed214b2ef6873c681fdcd1ab3305f97e'
+            'username' => 'tesprogrammer081223C04',
+            'password' => 'e8b4e8708f96cd55eb04ff02004e7e3a'
         );
 
         // Konfigurasi cURL

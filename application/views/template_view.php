@@ -25,10 +25,11 @@
             padding: 8px;
             text-align: left;
         }
-
-
     </style>
 
+    <!-- MODAL -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/modal/style.css">
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -360,6 +361,71 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url();?>assets/js/demo/datatables-demo.js"></script>
 
+    <?php if ($this->session->flashdata('success_message') || $this->session->flashdata('error_message')) : ?>
+        <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="resultModalLabel">Hasil Pengambilan Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php if ($this->session->flashdata('success_message')) : ?>
+                            <p class="text-success"><?= $this->session->flashdata('success_message') ?></p>
+                        <?php elseif ($this->session->flashdata('error_message')) : ?>
+                            <p class="text-danger"><?= $this->session->flashdata('error_message') ?></p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="getDataModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false"> 
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                <?php if ($this->session->flashdata('success_message')) : ?>
+                    <div class="modal-content"> 
+                        <div class="modal-body text-center p-lg-4"> 
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                                <circle class="path circle" fill="none" stroke="#198754" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                                <polyline class="path check" fill="none" stroke="#198754" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " /> 
+                            </svg> 
+                            <h4 class="text-success mt-3">Success!</h4> 
+                            <p class="mt-3">Data berhasil diambil dari API dan disimpan ke database.</p>
+                            <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button> 
+                        </div> 
+                    </div> 
+                <?php elseif ($this->session->flashdata('error_message')) : ?>
+                    <div class="modal-content"> 
+                        <div class="modal-body text-center p-lg-4"> 
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                                <circle class="path circle" fill="none" stroke="#db3646" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" /> 
+                                <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                                <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" X2="34.4" y2="92.2" /> 
+                            </svg> 
+                            <h4 class="text-danger mt-3">Error!</h4> 
+                            <p class="mt-3">Terjadi kesalahan saat mengambil data dari API.</p>
+                            <button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button> 
+                        </div> 
+                    </div> 
+                <?php endif; ?>    
+			</div> 
+		</div>
+
+        <script>
+            $(document).ready(function () {
+                //$('#resultModal').modal('show');
+                $('#getDataModal').modal('show');
+            });
+        </script>
+    <?php endif; ?>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js'></script>
 
 </body>
 

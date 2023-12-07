@@ -12,7 +12,7 @@ class DashboardModel extends CI_Model {
 
         // Data untuk dikirim (gunakan format sesuai kebutuhan API)
         $data = array(
-            'username' => 'tesprogrammer081223C04',
+            'username' => 'tesprogrammer081223C05',
             'password' => 'e8b4e8708f96cd55eb04ff02004e7e3a'
         );
 

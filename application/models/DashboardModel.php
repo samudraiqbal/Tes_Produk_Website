@@ -12,7 +12,7 @@ class DashboardModel extends CI_Model {
 
         // Data untuk dikirim (gunakan format sesuai kebutuhan API)
         $data = array(
-            'username' => 'tesprogrammer081223C05',
+            'username' => 'tesprogrammer081223C161',
             'password' => 'e8b4e8708f96cd55eb04ff02004e7e3a'
         );
 
@@ -126,5 +126,22 @@ class DashboardModel extends CI_Model {
         $query = $this->db->get();
 
         return $query->result();
+    }
+
+    public function getKategori() {
+        // Kueri untuk mendapatkan data kategori dari database
+        $query = $this->db->get('kategori');
+        return $query->result();
+    }
+
+    public function getStatus() {
+        // Kueri untuk mendapatkan data status dari database
+        $query = $this->db->get('status');
+        return $query->result();
+    }
+
+    public function tambahProduk($data) {
+        $this->db->insert('produk', $data);
+        return $this->db->insert_id();
     }
 }

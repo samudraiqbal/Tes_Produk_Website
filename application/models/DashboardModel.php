@@ -12,8 +12,8 @@ class DashboardModel extends CI_Model {
 
         // Data untuk dikirim (gunakan format sesuai kebutuhan API)
         $data = array(
-            'username' => 'tesprogrammer081223C20',
-            'password' => 'e8b4e8708f96cd55eb04ff02004e7e3a'
+            'username' => 'tesprogrammer091223C04',
+            'password' => '349c77a5762af90d145944651bbb4f7e'
         );
 
         // Konfigurasi cURL
@@ -151,9 +151,12 @@ class DashboardModel extends CI_Model {
     }
 
     public function getProdukById($id_produk) {
-        $this->db->select('*');
-        $this->db->from('produk');
         $this->db->where('id_produk', $id_produk);
-        return $this->db->get()->row();
+        return $this->db->get('produk')->row();
+    }
+
+    public function updateProduk($id_produk, $data) {
+        $this->db->where('id_produk', $id_produk);
+        return $this->db->update('produk', $data);
     }
 }

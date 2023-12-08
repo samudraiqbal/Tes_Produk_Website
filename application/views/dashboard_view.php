@@ -31,15 +31,15 @@
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <label for="namaProduk" class="">Nama Produk </label>
-                                            <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk" required oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')">
+                                            <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk"  oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')">
                                         </div>
                                         <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                             <label for="firstName">Harga </label>
-                                            <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk" required oninvalid="this.setCustomValidity('Harga tidak boleh kosong')" oninput="setCustomValidity('')">
+                                            <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk"  oninvalid="this.setCustomValidity('Harga tidak boleh kosong')" oninput="setCustomValidity('')">
                                         </div>
                                         <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                             <label for="kategori" style="margin-top: 10px;">Kategori </label>
-                                            <select class="form-control custom-select" id="kategori" name="kategori" required>
+                                            <select class="form-control form-select" id="kategori" name="kategori" required>
                                                 <option value="" disabled selected>Silahkan pilih kategori</option>
                                                 <?php foreach ($kategori as $row) : ?>
                                                     <option value="<?php echo $row->id_kategori; ?>"><?php echo $row->nama_kategori; ?></option>
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                             <label for="status" style="margin-top: 10px;">Status </label>
-                                            <select class="form-control custom-select" id="status" name="status" required>
+                                            <select class="form-control form-select" id="status" name="status" required>
                                                 <option value="" disabled selected>Silahkan pilih status</option>
                                                 <?php foreach ($status as $row) : ?>
                                                     <option value="<?php echo $row->id_status; ?>"><?php echo $row->nama_status; ?></option>
@@ -171,19 +171,20 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <form id="subs-form" action="<?php echo base_url('Dashboard/tambahproduk'); ?>" method="post">
+                                                    <form id="subs-form" action="<?php echo base_url('Dashboard/editproduk'); ?>" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-md-12 col-xs-12">
+                                                                <input type="hidden" name="id_produk" value="<?php echo $produk->id_produk; ?>">
                                                                 <label for="namaProduk" class="">Nama Produk </label>
-                                                                <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk" required oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')" value="<?php echo $produk->nama_produk; ?>">
+                                                                <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk"  oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')" value="<?php echo $produk->nama_produk; ?>">
                                                             </div>
                                                             <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                                                 <label for="firstName">Harga </label>
-                                                                <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk" required oninvalid="this.setCustomValidity('Harga tidak boleh kosong')" oninput="setCustomValidity('')" value="<?php echo $produk->harga; ?>">
+                                                                <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk"  oninvalid="this.setCustomValidity('Harga tidak boleh kosong')" oninput="setCustomValidity('')" value="<?php echo $produk->harga; ?>">
                                                             </div>
                                                             <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                                                 <label for="kategori" style="margin-top: 10px;">Kategori </label>
-                                                                <select class="form-control custom-select" id="kategori" name="kategori" required>
+                                                                <select class="form-control form-select" id="kategori" name="kategori" required>
                                                                     <option value="" disabled selected>Silahkan pilih kategori</option>
                                                                     <?php foreach ($kategori as $row) : ?>
                                                                         <?php if ($row->nama_kategori == $produk->nama_kategori) : ?>
@@ -196,7 +197,7 @@
                                                             </div>
                                                             <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                                                 <label for="status" style="margin-top: 10px;">Status </label>
-                                                                <select class="form-control custom-select" id="status" name="status" required>
+                                                                <select class="form-control form-select" id="status" name="status" required>
                                                                     <option value="" disabled selected>Silahkan pilih status</option>
                                                                     <?php foreach ($status as $row) : ?>
                                                                         <?php if ($row->nama_status == $produk->nama_status) : ?>
@@ -208,7 +209,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary text-center">Add</button>
+                                                        <button type="submit" class="btn btn-primary text-center">Edit</button>
                                                     </form>
                                                 </div>
                                             </div>

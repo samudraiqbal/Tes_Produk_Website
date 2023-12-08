@@ -65,5 +65,16 @@ class Dashboard extends CI_Controller {
         // Redirect atau tampilkan pesan sukses sesuai kebutuhan
         redirect('dashboard');
     }
+
+    public function hapusProduk($data) {
+        $result = $this->DashboardModel->hapusProduk($data);
+
+        if ($result) {
+            $this->session->set_flashdata('success_message', 'Data berhasil dihapus.');
+        } else {
+            $this->session->set_flashdata('error_message', 'Data gagal dihapus.');
+        }
+        redirect('dashboard');
+    }
 }
 ?>

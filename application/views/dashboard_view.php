@@ -127,7 +127,7 @@
                                     </a>
                                 </td>
                                 <td class="center-button">
-                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm" data-toggle="modal" data-target="#hapusModal<?= $produk->id_produk ?>">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -136,6 +136,29 @@
                                 <td><?= $produk->nama_kategori ?></td>
                                 <td><?= $produk->nama_status ?></td>
                             </tr>
+                            <!-- Modal Konfirmasi Hapus -->
+                            <div class="modal fade" id="hapusModal<?= $produk->id_produk ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus Produk</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Apakah Anda yakin ingin menghapus produk ini?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            <!-- Formulir untuk Penghapusan -->
+                                            <form action="<?= base_url('dashboard/hapusProduk/' . $produk->id_produk) ?>" method="post">
+                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

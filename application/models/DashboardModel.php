@@ -144,4 +144,9 @@ class DashboardModel extends CI_Model {
         $this->db->insert('produk', $data);
         return $this->db->insert_id();
     }
+
+    public function hapusProduk($data) {
+        $this->db->where('id_produk', $data);
+        return $this->db->delete('produk');
+    }
 }

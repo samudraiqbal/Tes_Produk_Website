@@ -31,15 +31,15 @@
                                     <div class="form-group row">
                                         <div class="col-md-12 col-xs-12">
                                             <label for="namaProduk" class="">Nama Produk </label>
-                                            <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk" required>
+                                            <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk" required oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')">
                                         </div>
                                         <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                             <label for="firstName">Harga </label>
-                                            <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk" required>
+                                            <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk" required oninvalid="this.setCustomValidity('Harga tidak boleh kosong')" oninput="setCustomValidity('')">
                                         </div>
                                         <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                             <label for="kategori" style="margin-top: 10px;">Kategori </label>
-                                            <select class="form-control" id="kategori" name="kategori" required>
+                                            <select class="form-control custom-select" id="kategori" name="kategori" required>
                                                 <option value="" disabled selected>Silahkan pilih kategori</option>
                                                 <?php foreach ($kategori as $row) : ?>
                                                     <option value="<?php echo $row->id_kategori; ?>"><?php echo $row->nama_kategori; ?></option>
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
                                             <label for="status" style="margin-top: 10px;">Status </label>
-                                            <select class="form-control" id="status" name="status" required>
+                                            <select class="form-control custom-select" id="status" name="status" required>
                                                 <option value="" disabled selected>Silahkan pilih status</option>
                                                 <?php foreach ($status as $row) : ?>
                                                     <option value="<?php echo $row->id_status; ?>"><?php echo $row->nama_status; ?></option>
@@ -122,7 +122,7 @@
                         <?php foreach ($produkData as $produk): ?>
                             <tr>
                                 <td class="center-button">
-                                    <a href="#" class="btn btn-success btn-circle btn-sm">
+                                    <a href="#" class="btn btn-success btn-circle btn-sm" data-toggle="modal" data-target="#editModal<?= $produk->id_produk ?>">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                 </td>
@@ -155,6 +155,63 @@
                                             <form action="<?= base_url('dashboard/hapusProduk/' . $produk->id_produk) ?>" method="post">
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                             </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MODAL EDIT -->
+                            <div class="modal fade" id="editModal<?= $produk->id_produk ?>">
+                                <div class="modal-dialog shadow-lg p-3 mb-5 bg-white rounded">
+                                    <div class="modal-content sub-bg">
+                                        <div class="modal-header subs-header">
+                                        <h4 class="modal-title">Form Edit Produk</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <form id="subs-form" action="<?php echo base_url('Dashboard/tambahproduk'); ?>" method="post">
+                                                        <div class="form-group row">
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <label for="namaProduk" class="">Nama Produk </label>
+                                                                <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukkan nama produk" required oninvalid="this.setCustomValidity('Nama tidak boleh kosong')" oninput="setCustomValidity('')" value="<?php echo $produk->nama_produk; ?>">
+                                                            </div>
+                                                            <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
+                                                                <label for="firstName">Harga </label>
+                                                                <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan harga produk" required oninvalid="this.setCustomValidity('Harga tidak boleh kosong')" oninput="setCustomValidity('')" value="<?php echo $produk->harga; ?>">
+                                                            </div>
+                                                            <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
+                                                                <label for="kategori" style="margin-top: 10px;">Kategori </label>
+                                                                <select class="form-control custom-select" id="kategori" name="kategori" required>
+                                                                    <option value="" disabled selected>Silahkan pilih kategori</option>
+                                                                    <?php foreach ($kategori as $row) : ?>
+                                                                        <?php if ($row->nama_kategori == $produk->nama_kategori) : ?>
+                                                                            <option value="<?php echo $row->id_kategori; ?>" selected><?php echo $row->nama_kategori; ?></option>
+                                                                        <?php else : ?>
+                                                                            <option value="<?php echo $row->id_kategori; ?>"><?php echo $row->nama_kategori; ?></option>
+                                                                        <?php endif; ?>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
+                                                                <label for="status" style="margin-top: 10px;">Status </label>
+                                                                <select class="form-control custom-select" id="status" name="status" required>
+                                                                    <option value="" disabled selected>Silahkan pilih status</option>
+                                                                    <?php foreach ($status as $row) : ?>
+                                                                        <?php if ($row->nama_status == $produk->nama_status) : ?>
+                                                                            <option value="<?php echo $row->id_status; ?>" selected><?php echo $row->nama_status; ?></option>
+                                                                        <?php else : ?>
+                                                                            <option value="<?php echo $row->id_status; ?>"><?php echo $row->nama_status; ?></option>
+                                                                        <?php endif; ?>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary text-center">Add</button>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

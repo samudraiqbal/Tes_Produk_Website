@@ -32,7 +32,7 @@ Filter status bisa dijual | Filter status tidak bisa dijual
 <img src="https://github.com/samudraiqbal/Tes_Produk_Website/assets/21413338/e056953c-b5a2-4512-aa5a-9c55747e8f3c" width="400"/>|<img src="https://github.com/samudraiqbal/Tes_Produk_Website/assets/21413338/7265603d-9480-4aba-b7a4-1344925f1e87" width="400"/>
 
 ## Link Dokumentasi Video
-* [Youtube](https://youtu.be/LF1JQOMERbY)
+* [YouTube](https://youtu.be/LF1JQOMERbY)
 
 ## About Me
 * Nama : Muhamad Iqbal Samudra

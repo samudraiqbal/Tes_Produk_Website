@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                            <!-- Formulir untuk Penghapusan -->
+                                            <!-- Form untuk Delete -->
                                             <form action="<?= base_url('dashboard/hapusProduk/' . $produk->id_produk) ?>" method="post">
                                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                             </form>
